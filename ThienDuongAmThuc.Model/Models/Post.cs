@@ -26,6 +26,7 @@ namespace ThienDuongAmThuc.Model.Models
         [MaxLength(500)]
         public string Description { set; get; }
 
+
         [MaxLength(256)]
         public string Image { set; get; }
 

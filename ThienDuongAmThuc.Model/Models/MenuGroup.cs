@@ -15,7 +15,6 @@ namespace ThienDuongAmThuc.Model.Models
         [MaxLength(50)]
         public string Name { set; get; }
 
-        //Khi menugroup.menus nó sẽ lấy ra được tất cả các menu thuộc group này.
         public virtual IEnumerable<Menu> Menus { set; get; }
     }
 }

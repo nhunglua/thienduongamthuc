@@ -12,5 +12,6 @@ namespace ThienDuongAmThuc.Model.Models
 
         [Required]
         public string Content { set; get; }
+
     }
 }

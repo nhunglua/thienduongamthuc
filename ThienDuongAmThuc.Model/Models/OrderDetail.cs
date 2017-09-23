@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace ThienDuongAmThuc.Model.Models
 {
     [Table("OrderDetails")]
+
     public class OrderDetail
     {
         [Key]

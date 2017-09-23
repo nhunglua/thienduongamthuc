@@ -18,5 +18,6 @@ namespace ThienDuongAmThuc.Model.Models
         public string ValueString { set; get; }
 
         public int? ValueInt { set; get; }
+
     }
 }

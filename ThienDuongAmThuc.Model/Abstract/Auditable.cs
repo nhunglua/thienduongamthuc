@@ -5,6 +5,7 @@ namespace ThienDuongAmThuc.Model.Abstract
 {
     public abstract class Auditable : IAuditable
     {
+
         public DateTime? CreatedDate { set; get; }
 
         [MaxLength(256)]

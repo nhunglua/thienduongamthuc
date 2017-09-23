@@ -36,5 +36,6 @@ namespace ThienDuongAmThuc.Model.Models
         public string Status { set; get; }
 
         public int? DisplayOrder { set; get; }
+
     }
 }

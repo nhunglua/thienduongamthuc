@@ -8,6 +8,7 @@ namespace ThienDuongAmThuc.Model.Models
     [Table("PostCategories")]
     public class PostCategory : Auditable
     {
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { set; get; }

@@ -21,5 +21,6 @@ namespace ThienDuongAmThuc.Model.Models
         [MaxLength(256)]
         [Required]
         public string Alias { set; get; }
+
     }
 }

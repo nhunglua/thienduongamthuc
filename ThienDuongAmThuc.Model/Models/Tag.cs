@@ -17,5 +17,6 @@ namespace ThienDuongAmThuc.Model.Models
         [MaxLength(50)]
         [Required]
         public string Type { set; get; }
+
     }
 }

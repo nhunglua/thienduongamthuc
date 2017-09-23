@@ -6,6 +6,7 @@ namespace ThienDuongAmThuc.Model.Models
     [Table("Menus")]
     public class Menu
     {
+        
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { set; get; }

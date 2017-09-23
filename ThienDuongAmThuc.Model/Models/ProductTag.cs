@@ -18,5 +18,6 @@ namespace ThienDuongAmThuc.Model.Models
 
         [ForeignKey("TagID")]
         public virtual Tag Tag { set; get; }
+
     }
 }

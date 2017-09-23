@@ -39,6 +39,7 @@ namespace ThienDuongAmThuc.Model.Models
         public string PaymentStatus { set; get; }
         public bool Status { set; get; }
 
+
         // khi order.ordertail thì sẽ lấy được toàn bộ detail của thằng order này.
         public virtual IEnumerable<OrderDetail> OrderDetails { set; get; }
     }

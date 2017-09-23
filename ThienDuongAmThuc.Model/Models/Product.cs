@@ -44,5 +44,6 @@ namespace ThienDuongAmThuc.Model.Models
 
         [ForeignKey("CategoryID")]
         public virtual ProductCategory ProductCategoy { set; get; }
+
     }
 }

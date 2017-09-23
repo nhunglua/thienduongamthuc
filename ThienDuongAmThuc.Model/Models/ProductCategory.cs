@@ -34,5 +34,6 @@ namespace ThienDuongAmThuc.Model.Models
 
         //xây dựng lớp ảo hóa, chỉ là một cái để tham chiếu.
         public virtual IEnumerable<Product> Products { set; get; }
+
     }
 }
