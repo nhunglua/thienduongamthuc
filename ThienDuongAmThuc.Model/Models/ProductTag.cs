@@ -7,10 +7,11 @@ namespace ThienDuongAmThuc.Model.Models
     public class ProductTag
     {
         [Key]
+        [Column(Order=1)]
         public int ProductID { set; get; }
 
         [Key]
-        [Column(TypeName = "varchar")]
+        [Column(TypeName = "varchar",Order =2)]
         public string TagID { set; get; }
 
         [ForeignKey("ProductID")]

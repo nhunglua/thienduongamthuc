@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ThienDuongAmThuc.Data.Infrastructure
 {
-   public abstract class RepositoryBase <T> where T: class
+   public abstract class RepositoryBase <T> : IRepository<T> where T: class
     {
         #region Properties
         private ThienDuongAmThucDbContext dataContext;
@@ -131,6 +131,16 @@ namespace ThienDuongAmThuc.Data.Infrastructure
         public bool CheckContains(Expression<Func<T, bool>> predicate)
         {
             return dataContext.Set<T>().Count<T>(predicate) > 0;
+        }
+
+        public T GetSingleByID(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<T> GetMuiltiPaging(Expression<Func<T, bool>> filter, out int total, int idex = 0, int size = 0, string[] includes = null)
+        {
+            throw new NotImplementedException();
         }
         #endregion
     }
