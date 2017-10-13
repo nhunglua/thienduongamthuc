@@ -12,12 +12,21 @@ namespace ThienDuongAmThuc.Service
     public interface IPostService
     {
         void Add(Post post);
+
         void Update(Post post);
+
         void Delete(int id);
+
         IEnumerable<Post> GetAll();
+
         IEnumerable<Post> GetAllPagding(int page, int pageSize, out int totalRow);
+
+        IEnumerable<Post> GetAllByCategoryPagding(int categoryID, int page, int pageSize, out int totalRow);
+
         Post GetById(int id);
+
         IEnumerable<Post> GetAllByTagPaging(string tag,int page, int pageSize, out int totalRow);
+
         void SaveChange();
     }
     public class PostService : IPostService
@@ -46,10 +55,15 @@ namespace ThienDuongAmThuc.Service
             return _postRepository.GetAll(new string[] { "PostCategory" });
         }
 
+        public IEnumerable<Post> GetAllByCategoryPagding(int categoryID, int page, int pageSize, out int totalRow)
+        {
+            return _postRepository.GetMuiltiPaging(x => x.Status && x.CategoryID == categoryID, out totalRow, page, pageSize, new string[] { "PostCategory" } );
+        }
+
         public IEnumerable<Post> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow)
         {
             //TODO: select all post by tag
-            return _postRepository.GetMuiltiPaging(x => x.Status , out totalRow, page, pageSize);
+            return _postRepository.GetAllByTag(tag, page, pageSize,out totalRow);
         }
 
         public IEnumerable<Post> GetAllPagding(int page, int pageSize, out int totalRow)
