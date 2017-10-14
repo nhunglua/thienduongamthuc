@@ -22,6 +22,7 @@ namespace ThienDuongAmThuc.Service
         IEnumerable<PostCategory> GetAllByparentID(int parentID);
 
         PostCategory GetById(int id);
+        void Save();
     }
     public class PostCategoryService : IPostCategoryService
     {
@@ -55,6 +56,11 @@ namespace ThienDuongAmThuc.Service
         public PostCategory GetById(int id)
         {
             return _postCategoryRepository.GetSingleByID(id);
+        }
+
+        public void Save()
+        {
+            _unitOfWork.commit();
         }
 
         public void Update(PostCategory postCategory)
