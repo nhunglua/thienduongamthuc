@@ -1,9 +1,13 @@
-﻿using System.Net;
+﻿using AutoMapper;
+using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using ThienDuongAmThuc.Model.Models;
 using ThienDuongAmThuc.Service;
 using ThienDuongAmThuc.Web.Infrastructure.Core;
+using ThienDuongAmThuc.Web.Models;
+using ThienDuongAmThuc.Web.Infrastructure.Extensions;
 
 namespace ThienDuongAmThuc.Web.API
 {
@@ -23,14 +27,15 @@ namespace ThienDuongAmThuc.Web.API
             return CreateHttpResponse(request, () =>
             {
                 var listcategory = _postCategoryService.GetAll();
+                var listCategoryVm = Mapper.Map<List<PostCategoryViewModel>>(listcategory);
 
-                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listcategory);
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listCategoryVm);
 
                 return response;
             });
         }
-        [Route("Post")]
-        public HttpResponseMessage Post(HttpRequestMessage request, PostCategory postCategory)
+        [Route("add")]
+        public HttpResponseMessage Post(HttpRequestMessage request, PostCategoryViewModel postCategoryVm)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -41,7 +46,9 @@ namespace ThienDuongAmThuc.Web.API
                 }
                 else
                 {
-                    var category = _postCategoryService.Add(postCategory);
+                    PostCategory newPostcategory = new PostCategory();
+                    newPostcategory.UpdatePostCategory(postCategoryVm);
+                    var category = _postCategoryService.Add(newPostcategory);
                     _postCategoryService.Save();
 
                     response = request.CreateResponse(HttpStatusCode.Created, category);
@@ -49,8 +56,8 @@ namespace ThienDuongAmThuc.Web.API
                 return response;
             });
         }
-        [Route("put")]
-        public HttpResponseMessage Put(HttpRequestMessage request, PostCategory postCategory)
+        [Route("update")]
+        public HttpResponseMessage Put(HttpRequestMessage request, PostCategoryViewModel postCategoryVm)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -61,7 +68,9 @@ namespace ThienDuongAmThuc.Web.API
                 }
                 else
                 {
-                    _postCategoryService.Update(postCategory);
+                    var postCategoryDB = _postCategoryService.GetById(postCategoryVm.ID);
+                    postCategoryDB.UpdatePostCategory(postCategoryVm);
+                    _postCategoryService.Update(postCategoryDB);
                     _postCategoryService.Save();
 
                     response = request.CreateResponse(HttpStatusCode.OK);
