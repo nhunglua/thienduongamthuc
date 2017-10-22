@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -8,7 +9,7 @@ using ThienDuongAmThuc.Model.Models;
 
 namespace ThienDuongAmThuc.Data
 {
-   public class ThienDuongAmThucDbContext:DbContext
+   public class ThienDuongAmThucDbContext: IdentityDbContext<ApplicationUser>
     {
         public ThienDuongAmThucDbContext() : base("Connection") {
             //Khi load bang cha khong tu dong include bang con.
@@ -33,10 +34,16 @@ namespace ThienDuongAmThuc.Data
         public DbSet<VisitorStatistic> VisitorStatistics { set; get; }
         public DbSet<Error> Errors { set; get; }
         public DbSet<Tag> Tags { set; get; }
+
+        public static ThienDuongAmThucDbContext Create()
+        {
+            return new ThienDuongAmThucDbContext();
+        }
         //se chay khi chung ta khoi tao entity framwork
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            
+            modelBuilder.Entity<IdentityUserRole>().HasKey(i => new { i.UserId , i.RoleId} );
+            modelBuilder.Entity<IdentityUserLogin>().HasKey(i => i.UserId);
         }
     }
 }
