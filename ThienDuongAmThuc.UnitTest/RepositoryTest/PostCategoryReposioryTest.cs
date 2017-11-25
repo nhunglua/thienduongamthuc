@@ -10,9 +10,10 @@ namespace ThienDuongAmThuc.UnitTest.RepositoryTest
     public class PostCategoryReposioryTest
     {
         // dung ba interface nay de tuong tac voi DB
-        IDbFactory dbFactory;
-        IPostCategoryRepository objRepository;
-        IUnitOfWork unitOfWork;
+        private IDbFactory dbFactory;
+
+        private IPostCategoryRepository objRepository;
+        private IUnitOfWork unitOfWork;
 
         [TestInitialize] //co 1 cai phuong thuc, thuoc tinh giup ta chay lan dau tien khi chay de thiet lap tham so , khoi tao doi tuong
         public void Initialize()
@@ -38,12 +39,11 @@ namespace ThienDuongAmThuc.UnitTest.RepositoryTest
             category.Alias = "Test-category";
             category.Status = true;
 
-            var result= objRepository.Add(category);
+            var result = objRepository.Add(category);
             unitOfWork.commit();
 
             Assert.IsNotNull(result);
             Assert.AreEqual(6, result.ID);
-
         }
     }
 }
