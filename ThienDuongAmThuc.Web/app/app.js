@@ -1,0 +1,1 @@
+﻿// đặt những cấu hình tạo module chính
