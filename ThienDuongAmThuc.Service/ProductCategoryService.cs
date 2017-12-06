@@ -45,7 +45,7 @@ namespace ThienDuongAmThuc.Service
 
         public IEnumerable<ProductCategory> GetAll()
         {
-            return _productCategoryRepository.GetAll();
+          return _productCategoryRepository.GetAll();
         }
 
         public IEnumerable<ProductCategory> GetAllByparentID(int parentID)
