@@ -229,6 +229,7 @@
     <Content Include="app\components\product_categories\productCategoryListView.html" />
     <Content Include="app\Shared\modules\onlineShop.common.js" />
     <Content Include="app\Shared\services\apiService.js" />
+    <Content Include="app\Shared\Filters\statusFilter.js" />
     <Content Include="Assets\admin\css\AdminLTE.css" />
     <Content Include="Assets\admin\css\AdminLTE.min.css" />
     <Content Include="Assets\admin\css\alt\AdminLTE-bootstrap-social.css" />
