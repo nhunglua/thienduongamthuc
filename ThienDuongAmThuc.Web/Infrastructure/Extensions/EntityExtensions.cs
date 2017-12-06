@@ -22,7 +22,7 @@ namespace ThienDuongAmThuc.Web.Infrastructure.Extensions
             postCategory.CreatedDate = postCategoryVm.CreatedDate;
             postCategory.CreatedBy = postCategoryVm.CreatedBy;
             postCategory.UpdatedDate = postCategoryVm.UpdatedDate;
-            postCategory.UpdateBy = postCategoryVm.UpdateBy;
+            postCategory.UpdateBy = postCategoryVm.UpdatedBy;
             postCategory.MetaKeyword = postCategoryVm.MetaKeyword;
             postCategory.MetaDescription = postCategoryVm.MetaDescription;
             postCategory.Status = postCategoryVm.Status;
@@ -43,7 +43,7 @@ namespace ThienDuongAmThuc.Web.Infrastructure.Extensions
             post.CreatedDate = postVm.CreatedDate;
             post.CreatedBy = postVm.CreatedBy;
             post.UpdatedDate = postVm.UpdatedDate;
-            post.UpdateBy = postVm.UpdateBy;
+            post.UpdateBy = postVm.UpdatedBy;
             post.MetaKeyword = postVm.MetaKeyword;
             post.MetaDescription = postVm.MetaDescription;
             post.Status = postVm.Status;

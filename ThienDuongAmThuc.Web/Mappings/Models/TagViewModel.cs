@@ -7,7 +7,7 @@ namespace ThienDuongAmThuc.Web.Models
 {
     public class TagViewModel
     {
-        public string ID { set; get; }
+        public string ID { get; set; }
 
         public string Name { set; get; }
 
