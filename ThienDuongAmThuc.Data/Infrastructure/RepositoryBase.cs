@@ -145,9 +145,9 @@ namespace ThienDuongAmThuc.Data.Infrastructure
             return dataContext.Set<T>().Count<T>(predicate) > 0;
         }
 
-        public T GetSingleByID(int id)
+        public virtual T GetSingleByID(int id)
         {
-            throw new NotImplementedException();
+            return dbSet.Find(id);
         }
 
         public IEnumerable<T> GetMuiltiPaging(Expression<Func<T, bool>> filter, out int total, int idex = 0, int size = 0, string[] includes = null)
