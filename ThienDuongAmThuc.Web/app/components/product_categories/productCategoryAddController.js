@@ -7,10 +7,11 @@
     function productCategoryAddController(apiService, $scope, notificationService, $state) {
         $scope.productCategory = {
             CreatedDate: new Date(),
-            Status: true,
-            Name: 'Danh mục 1'
+            Status: true
         }
         $scope.AddProductCategory = AddProductCategory;
+
+       
         function AddProductCategory() {
             apiService.post('/api/productcategory/create', $scope.productCategory, function (result) {
                 notificationService.displaySuccess(result.data.Name + ' đã được thêm mới,');

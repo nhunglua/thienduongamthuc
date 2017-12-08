@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Script.Serialization;
 using ThienDuongAmThuc.Model.Models;
 using ThienDuongAmThuc.Service;
 using ThienDuongAmThuc.Web.Infrastructure.Core;
@@ -130,6 +131,57 @@ namespace ThienDuongAmThuc.Web.API
 
                     var responseData = Mapper.Map<ProductCategory, ProductCategoryViewModel>(dbProductCategory);
                     respone = request.CreateResponse(HttpStatusCode.Created, responseData);
+                }
+
+                return respone;
+            });
+        }
+
+        [Route("delete")]
+        [HttpDelete]
+        [AllowAnonymous]
+        public HttpResponseMessage Delete(HttpRequestMessage request,int id)
+        {
+            return CreateHttpResponse(request, () => {
+                HttpResponseMessage respone = null;
+                if (!ModelState.IsValid)
+                {
+                    respone = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                   var oldProductCategory= _productCategoryService.Delete(id);
+                    _productCategoryService.Save();
+
+                    var responseData = Mapper.Map<ProductCategory, ProductCategoryViewModel>(oldProductCategory);
+                    respone = request.CreateResponse(HttpStatusCode.Created, responseData);
+                }
+
+                return respone;
+            });
+        }
+
+        [Route("deletemulti")]
+        [HttpDelete]
+        [AllowAnonymous]
+        public HttpResponseMessage DeleteMulti(HttpRequestMessage request, string checkedProductCategories)
+        {
+            return CreateHttpResponse(request, () => {
+                HttpResponseMessage respone = null;
+                if (!ModelState.IsValid)
+                {
+                    respone = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                    var listProductCategory = new JavaScriptSerializer().Deserialize<List<int>>(checkedProductCategories);
+                    foreach(var item in listProductCategory)
+                    {
+                        _productCategoryService.Delete(item);
+                    }
+                    _productCategoryService.Save();
+
+                    respone = request.CreateResponse(HttpStatusCode.OK, listProductCategory.Count);
                 }
 
                 return respone;
